@@ -6,14 +6,33 @@
 //
 
 import UIKit
-
+import Firebase
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tfMail: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
 
+    @IBAction func signinClicked(_ sender: Any) {
+        performSegue(withIdentifier: "toFeedVC", sender: nil)
+    }
+    @IBAction func singupClick(_ sender: Any) {
+        
+        if tfMail.text != "" &&  tfPassword.text != "" {
+            Auth.auth().createUser(withEmail: tfMail.text!, password: tfPassword.text!) { (<#AuthDataResult?#>, <#Error?#>) in
+                <#code#>
+            }
+        } else{
+            let  alert = UIAlertController(title: "Error", message: "Username?/password?", preferredStyle: UIAlertController.Style.alert)
+            let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+        
+            
+        }        }
 }
 
