@@ -13,14 +13,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Remember user
+       
+       
     }
 
 
     @IBAction func signinClicked(_ sender: Any) {
-
-        
-        performSegue(withIdentifier: "toFeedVC", sender: nil)
+        if tfMail.text != "" &&  tfPassword.text != "" {
+            Auth.auth().signIn(withEmail: tfMail.text!, password: tfPassword.text!) { (authdata, errorSignIn) in
+                if errorSignIn != nil{
+                self.Alert(title: "Error!", error:errorSignIn?.localizedDescription ?? "Sig up Error")
+                                     }
+                else{self.performSegue(withIdentifier: "toFeedVC", sender: nil)}
+            }
+        }
+        else{
+            Alert(title: "Error",error: "Password/mail is not empty")
+                
+            }
     }
     
     @IBAction func singupClick(_ sender: Any) {
@@ -28,8 +39,7 @@ class ViewController: UIViewController {
         if tfMail.text != "" &&  tfPassword.text != "" { // Auth firebase  Auth.auth
             Auth.auth().createUser(withEmail: tfMail.text!, password: tfPassword.text!) { (authdata, errorAuth ) in
                 if errorAuth != nil{
-                    self.Alert(title: "Error!", error:errorAuth?.localizedDescription ?? "Sig in Error")
-    
+                    self.Alert(title: "Error!", error:errorAuth?.localizedDescription ?? "Sig up Error")
                 }
                 else{self.performSegue(withIdentifier: "toFeedVC", sender: nil)}
                                                                                         }
