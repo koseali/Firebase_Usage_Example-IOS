@@ -87,14 +87,89 @@
                     <view key="view" contentMode="scaleToFill" id="whg-cB-3Ks">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="pencil.tip" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hgz-rg-q3i">
+                                <rect key="frame" x="20" y="70" width="376" height="199"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hfi-zD-sDG">
+                                <rect key="frame" x="123" y="352" width="169" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="YmP-Zh-6aP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Post Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dX-8n-YOW">
+                                <rect key="frame" x="123" y="450" width="169" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="xCp-up-ceO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-gp-L7L">
+                                <rect key="frame" x="154" y="408" width="122" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="a66-BN-xNM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Eo-Qj-UH1">
+                                <rect key="frame" x="183" y="575" width="49" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="yoR-Or-2uv"/>
+                                </constraints>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="clickUpload:" destination="3Yf-M0-UbA" eventType="touchUpInside" id="Uvd-2Z-BSI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Date:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCY-Sl-7RF">
+                                <rect key="frame" x="154" y="323" width="85" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KFc-OQ-1f1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gyI-bE-JOp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hfi-zD-sDG" firstAttribute="trailing" secondItem="3dX-8n-YOW" secondAttribute="trailing" id="7Ra-eg-4ss"/>
+                            <constraint firstItem="pCY-Sl-7RF" firstAttribute="leading" secondItem="bCl-gp-L7L" secondAttribute="leading" id="8EO-1D-Z89"/>
+                            <constraint firstItem="bCl-gp-L7L" firstAttribute="top" secondItem="Hfi-zD-sDG" secondAttribute="bottom" constant="22" id="9WV-Kb-FOV"/>
+                            <constraint firstItem="5Eo-Qj-UH1" firstAttribute="leading" secondItem="gyI-bE-JOp" secondAttribute="leading" constant="183" id="Fky-G8-5ki"/>
+                            <constraint firstItem="hgz-rg-q3i" firstAttribute="leading" secondItem="whg-cB-3Ks" secondAttribute="leadingMargin" id="GSD-S8-bHk"/>
+                            <constraint firstItem="Hfi-zD-sDG" firstAttribute="centerX" secondItem="whg-cB-3Ks" secondAttribute="centerX" id="KiC-TV-ita"/>
+                            <constraint firstItem="pCY-Sl-7RF" firstAttribute="top" secondItem="hgz-rg-q3i" secondAttribute="bottom" constant="53" id="Los-Wm-xPq"/>
+                            <constraint firstItem="hgz-rg-q3i" firstAttribute="centerX" secondItem="Hfi-zD-sDG" secondAttribute="centerX" id="N92-kZ-3Fy"/>
+                            <constraint firstItem="gyI-bE-JOp" firstAttribute="trailing" secondItem="bCl-gp-L7L" secondAttribute="trailing" constant="138" id="Nub-2K-eyH"/>
+                            <constraint firstItem="3dX-8n-YOW" firstAttribute="centerX" secondItem="5Eo-Qj-UH1" secondAttribute="centerX" id="T7e-e3-JL5"/>
+                            <constraint firstItem="Hfi-zD-sDG" firstAttribute="top" secondItem="pCY-Sl-7RF" secondAttribute="bottom" constant="8" id="WuZ-Nx-0gt"/>
+                            <constraint firstItem="5Eo-Qj-UH1" firstAttribute="top" secondItem="3dX-8n-YOW" secondAttribute="bottom" constant="91" id="X2n-5S-Ms6"/>
+                            <constraint firstItem="pCY-Sl-7RF" firstAttribute="leading" secondItem="gyI-bE-JOp" secondAttribute="leading" constant="154" id="YhC-6A-zpN"/>
+                            <constraint firstItem="Hfi-zD-sDG" firstAttribute="leading" secondItem="gyI-bE-JOp" secondAttribute="leading" constant="123" id="eMH-7f-U2z"/>
+                            <constraint firstItem="hgz-rg-q3i" firstAttribute="top" secondItem="gyI-bE-JOp" secondAttribute="top" constant="25" id="iVa-87-i0K"/>
+                            <constraint firstItem="Hfi-zD-sDG" firstAttribute="leading" secondItem="3dX-8n-YOW" secondAttribute="leading" id="mak-qO-qzY"/>
+                            <constraint firstItem="gyI-bE-JOp" firstAttribute="bottom" secondItem="5Eo-Qj-UH1" secondAttribute="bottom" constant="208" id="mf8-Q0-Cq5"/>
+                            <constraint firstItem="3dX-8n-YOW" firstAttribute="top" secondItem="bCl-gp-L7L" secondAttribute="bottom" constant="21" id="zpo-10-EDW"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="u.circle.fill" catalog="system" id="q4e-cF-yx7"/>
+                    <connections>
+                        <outlet property="imageView" destination="hgz-rg-q3i" id="gtf-Fy-54E"/>
+                        <outlet property="tfDate" destination="Hfi-zD-sDG" id="9zb-nw-RSq"/>
+                        <outlet property="tfName" destination="3dX-8n-YOW" id="OHb-E0-p6G"/>
+                        <outlet property="uploadButton" destination="5Eo-Qj-UH1" id="Zct-kV-XXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLU-pK-JAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1113" y="-1210"/>
+            <point key="canvasLocation" x="-1113.0434782608697" y="-1210.0446428571429"/>
         </scene>
         <!--Settings-->
         <scene sceneID="NRa-Y9-UUt">
@@ -164,6 +239,7 @@
     </scenes>
     <resources>
         <image name="f.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil.tip" catalog="system" width="99" height="128"/>
         <image name="s.circle.fill" catalog="system" width="128" height="121"/>
         <image name="u.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
