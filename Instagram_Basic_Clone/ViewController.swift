@@ -18,21 +18,32 @@ class ViewController: UIViewController {
 
 
     @IBAction func signinClicked(_ sender: Any) {
+
+        
         performSegue(withIdentifier: "toFeedVC", sender: nil)
     }
+    
     @IBAction func singupClick(_ sender: Any) {
         
-        if tfMail.text != "" &&  tfPassword.text != "" {
-            Auth.auth().createUser(withEmail: tfMail.text!, password: tfPassword.text!) { (<#AuthDataResult?#>, <#Error?#>) in
-                <#code#>
-            }
-        } else{
-            let  alert = UIAlertController(title: "Error", message: "Username?/password?", preferredStyle: UIAlertController.Style.alert)
-            let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
+        if tfMail.text != "" &&  tfPassword.text != "" { // Auth firebase  Auth.auth
+            Auth.auth().createUser(withEmail: tfMail.text!, password: tfPassword.text!) { (authdata, errorAuth ) in
+                if errorAuth != nil{
+                    self.Alert(title: "Error!", error:errorAuth?.localizedDescription ?? "Sig in Error")
+    
+                }
+                else{self.performSegue(withIdentifier: "toFeedVC", sender: nil)}
+                                                                                        }
+        }
+        else{
+            Alert(title: "Error",error: "Password/mail is not empty")
         
-            
-        }        }
+            }                                   }
+    func Alert(title: String,error : String) {
+        
+        let  alert = UIAlertController(title: title, message: error, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
