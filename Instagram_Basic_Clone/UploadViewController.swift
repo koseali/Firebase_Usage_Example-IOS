@@ -38,22 +38,23 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
         let storageRef = storage.reference()
         let mediaFolder = storageRef.child("media") // child ile klasor icinde gidebiliyoruz.
         if let  data = imageView.image?.jpegData(compressionQuality: 0.5){
+           
+            let uuid = UUID().uuidString // different image save firebase storage and different names.
             
-            let imageReferance = mediaFolder.child("image.jpeg")
+            let imageReferance = mediaFolder.child("\(uuid).jpeg") // if you dont add jpeg. You save the .dms extension.
+            
             imageReferance.putData(data, metadata: nil) { (metadata, error) in
                 if error != nil{
-                    
-                   let alert = UIAlertController(title: "Error", message: error?.localizedDescription ?? "Hata", preferredStyle: UIAlertController.Style.alert)
-                    let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                    alert.addAction(okButton)
-                    self.present(alert, animated: true, completion: nil)
+                    self.makeAlert(title: "Storage Error!", error: error?.localizedDescription ?? "Error about Storage")
                 }
+                
                 else{
                     imageReferance.downloadURL { (url, error) in
                         if error == nil {
                             let imageUrl = url?.absoluteURL
                             print("Linkten onceki satir.")
                             print(imageUrl!)
+                            // DATABASE
                         }
                     }
                     
@@ -62,7 +63,15 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
             
             }
         }
+       
+        
     }
-    
+    func makeAlert( title : String , error : String){
+        let alert = UIAlertController(title: title, message: error, preferredStyle: UIAlertController.Style.alert)
+         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+         alert.addAction(okButton)
+         self.present(alert, animated: true, completion: nil)
+        
+    }
 
 }
