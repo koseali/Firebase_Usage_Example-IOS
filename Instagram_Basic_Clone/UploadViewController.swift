@@ -58,11 +58,15 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
                             let fireStore = Firestore.firestore()
                             var fireStorRef : DocumentReference? = nil
                             
-                            let fireStorePost = ["imageUrl" : imageUrl?.absoluteString ?? "Error image url" ,"postedBy" : Auth.auth().currentUser!.email!,"postComment" : self.tfName.text!, "date" : "date" , "likes" : 0 ] as [String : Any]
+                            let fireStorePost = ["imageUrl" : imageUrl?.absoluteString ?? "Error image url" ,"postedBy" : Auth.auth().currentUser!.email!,"postComment" : self.tfName.text!, "date" : FieldValue.serverTimestamp(), "likes" : 0 ] as [String : Any]
                             
                             fireStorRef = fireStore.collection("Posts").addDocument(data: fireStorePost, completion: { (error) in
                                 if error != nil{
                                     self.makeAlert(title: "Error", error: error?.localizedDescription ?? "firestore Error")
+                                }
+                                else{ self.tabBarController?.selectedIndex = 0
+                                    self.imageView.image = UIImage(named: "select.jpeg")
+                                    self.tfName.text = ""
                                 }
                             })
                     
