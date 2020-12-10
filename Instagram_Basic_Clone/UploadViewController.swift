@@ -37,7 +37,7 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let mediaFolder = storageRef.child("media") // child ile klasor icinde gidebiliyoruz.
-        if let  data = imageView.image?.jpegData(compressionQuality: 0.5){
+        if  let  data = imageView.image?.jpegData(compressionQuality: 0.5){
            
             let uuid = UUID().uuidString // different image save firebase storage and different names.
             
@@ -55,17 +55,26 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
                             print("Linkten onceki satir.")
                             print(imageUrl!)
                             // DATABASE
-                        }
+                            let fireStore = Firestore.firestore()
+                            var fireStorRef : DocumentReference? = nil
+                            
+                            let fireStorePost = ["imageUrl" : imageUrl?.absoluteString ?? "Error image url" ,"postedBy" : Auth.auth().currentUser!.email!,"postComment" : self.tfName.text!, "date" : "date" , "likes" : 0 ] as [String : Any]
+                            
+                            fireStorRef = fireStore.collection("Posts").addDocument(data: fireStorePost, completion: { (error) in
+                                if error != nil{
+                                    self.makeAlert(title: "Error", error: error?.localizedDescription ?? "firestore Error")
+                                }
+                            })
+                    
+                            
                     }
-                    
-                    
+                  }
                 }
-            
-            }
+                
+               }
         }
-       
-        
     }
+       
     func makeAlert( title : String , error : String){
         let alert = UIAlertController(title: title, message: error, preferredStyle: UIAlertController.Style.alert)
          let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
@@ -73,5 +82,8 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
          self.present(alert, animated: true, completion: nil)
         
     }
+        
+    }
+    
 
-}
+
