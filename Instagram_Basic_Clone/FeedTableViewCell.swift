@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 class FeedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lbComment: UILabel!
@@ -25,6 +25,11 @@ class FeedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func likeButtonClick(_ sender: Any) {
+        let fireStore = Firestore.firestore()
+        if let likeCount = Int(lbLike.text!){
+            let LikeDictionary =  ["likes" : likeCount + 1] as [String : Any]
+            fireStore.collection("Posts").document(lbDocumentId.text!).setData(LikeDictionary, merge: true)
+        }
     }
     
 }
