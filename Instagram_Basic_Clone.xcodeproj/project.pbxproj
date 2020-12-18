@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95075D4025825576002218BD /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95075D3F25825576002218BD /* FeedTableViewCell.swift */; };
 		951B0D29257E751800CE5D0A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951B0D28257E751800CE5D0A /* FeedViewController.swift */; };
 		951B0D2D257E753100CE5D0A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951B0D2C257E753100CE5D0A /* UploadViewController.swift */; };
 		951B0D30257E753E00CE5D0A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951B0D2F257E753E00CE5D0A /* SettingsViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		3D844D9F226F0E702ADF0816 /* Pods-Instagram_Basic_Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram_Basic_Clone.release.xcconfig"; path = "Target Support Files/Pods-Instagram_Basic_Clone/Pods-Instagram_Basic_Clone.release.xcconfig"; sourceTree = "<group>"; };
+		95075D3F25825576002218BD /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		951B0D28257E751800CE5D0A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		951B0D2C257E753100CE5D0A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		951B0D2F257E753E00CE5D0A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				951B0D28257E751800CE5D0A /* FeedViewController.swift */,
 				951B0D2C257E753100CE5D0A /* UploadViewController.swift */,
 				951B0D2F257E753E00CE5D0A /* SettingsViewController.swift */,
+				95075D3F25825576002218BD /* FeedTableViewCell.swift */,
 				9555FD76257BA6130081FA62 /* Main.storyboard */,
 				9555FD79257BA6140081FA62 /* Assets.xcassets */,
 				9555FD7B257BA6140081FA62 /* LaunchScreen.storyboard */,
@@ -220,6 +223,7 @@
 			files = (
 				9555FD75257BA6130081FA62 /* ViewController.swift in Sources */,
 				951B0D2D257E753100CE5D0A /* UploadViewController.swift in Sources */,
+				95075D4025825576002218BD /* FeedTableViewCell.swift in Sources */,
 				9555FD71257BA6130081FA62 /* AppDelegate.swift in Sources */,
 				951B0D29257E751800CE5D0A /* FeedViewController.swift in Sources */,
 				9555FD73257BA6130081FA62 /* SceneDelegate.swift in Sources */,

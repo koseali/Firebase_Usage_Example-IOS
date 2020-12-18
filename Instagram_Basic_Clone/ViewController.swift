@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         if tfMail.text != "" &&  tfPassword.text != "" { // Auth firebase  Auth.auth
             Auth.auth().createUser(withEmail: tfMail.text!, password: tfPassword.text!) { (authdata, errorAuth ) in
                 if errorAuth != nil{
-                    self.Alert(title: "Error!", error:errorAuth?.localizedDescription ?? "Sig up Error")
+                    self.Alert(title: "Error!", error:errorAuth?.localizedDescription ?? "Sing up Error")
                 }
                 else{self.performSegue(withIdentifier: "toFeedVC", sender: nil)}
                                                                                         }

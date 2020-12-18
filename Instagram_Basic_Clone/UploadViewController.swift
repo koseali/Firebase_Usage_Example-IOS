@@ -34,6 +34,7 @@ class UploadViewController: UIViewController ,UINavigationControllerDelegate, UI
     }
 
     @IBAction func clickUpload(_ sender: Any) { // image save on firebase storage.
+        
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let mediaFolder = storageRef.child("media") // child ile klasor icinde gidebiliyoruz.
