@@ -13,6 +13,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var lbMail: UILabel!
     @IBOutlet weak var lbLike: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var lbDocumentId: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

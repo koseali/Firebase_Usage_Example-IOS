@@ -14,6 +14,7 @@ class FeedViewController: UIViewController , UITableViewDelegate,UITableViewData
     var likeArray = [Int]()
     var userCommentArray = [String]()
     var userImageArray = [String]()
+    var documentIdArray  = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class FeedViewController: UIViewController , UITableViewDelegate,UITableViewData
         cell.lbLike.text =  String(likeArray[indexPath.row])
         cell.lbComment.text = userCommentArray[indexPath.row]
         cell.userImageView.sd_setImage(with:URL(string: self.userImageArray[indexPath.row]))
+        cell.lbDocumentId.text = documentIdArray[indexPath.row]
         return cell
     }
     func getDataFireStore(){
@@ -41,9 +43,10 @@ class FeedViewController: UIViewController , UITableViewDelegate,UITableViewData
         /* Tarih ayarı
         let settings = db.settings
         settings.areTimes */
-        db.collection("Posts").addSnapshotListener { (snapshot, error) in // sadece post altı postun içindeki için daha devam
+        db.collection("Posts").order(by: "date", descending: true)
+            .addSnapshotListener { (snapshot, error) in // sadece post altı postun içindeki için daha devam
             if error != nil {
-                
+                self.makeAlert(title: "Document Error", error: "Document doesnt connection.")
             }
             else{
                 if snapshot?.isEmpty == false {
@@ -51,10 +54,12 @@ class FeedViewController: UIViewController , UITableViewDelegate,UITableViewData
                     self.userCommentArray.removeAll(keepingCapacity: false)
                     self.userEmailArray.removeAll(keepingCapacity: false)
                     self.likeArray.removeAll(keepingCapacity: false)
+                    self.documentIdArray.removeAll(keepingCapacity: false)
                     for document in snapshot!.documents{
                         let documentId = document.documentID
+                        self.documentIdArray.append(documentId)
                         print("dokuman idleri burada")
-                        print(documentId)
+                        
                         if let postedBy = document.get("postedBy") as? String{
                             self.userEmailArray.append(postedBy)
                         }
@@ -76,7 +81,13 @@ class FeedViewController: UIViewController , UITableViewDelegate,UITableViewData
         }
        
     }
-
+    func makeAlert( title : String , error : String){
+        let alert = UIAlertController(title: title, message: error, preferredStyle: UIAlertController.Style.alert)
+         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+         alert.addAction(okButton)
+         self.present(alert, animated: true, completion: nil)
+        
+    }
 
 
 }
